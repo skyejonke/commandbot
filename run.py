@@ -7,11 +7,17 @@ from notebook import Notebook
 client = discord.Client()
 
 notebook = None
+id = None
 
 with shelve.open("storage.db") as db:
     if "notebook" not in db:
+        print("Remaking notebook")
         db["notebook"] = Notebook()
+    if "id" not in db:
+        db["id"] = input("Give me a token: ")
     notebook = db["notebook"]
+    id = db["id"]
+
 
 
 @client.event
@@ -26,6 +32,7 @@ async def on_message(message):
 
     if message.content.startswith('$help'):
         output = "```\n"
+        print(notebook.commandDict.items())
         for x, y in notebook.commandDict.items():
             output = output + '$' + x + ": " + y.description + "\n"
         output = output + "Only the those with the following ids can run these:\n"
@@ -45,5 +52,5 @@ async def on_message(message):
                     break
 
 
-client.run('NzAwMTIwMzU2MzQ5ODA0NjM1.XpeUEg.6wuc_Ow1U-DLLOhsGRw_xEsOE10')
+client.run(id)
 

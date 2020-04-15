@@ -1,6 +1,8 @@
 import subprocess
 
 class Command:
+    cmd = None
+    description = None
     def __init__(self, cmd, description):
         self.cmd = cmd
         self.description = description
