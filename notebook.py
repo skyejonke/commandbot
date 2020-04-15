@@ -6,7 +6,7 @@ class Notebook:
 
     def __init__(self):
         print("Using default config")
-        self.commandDict = {"restart": Command("screen -d -r minecraft-simplex -X stuff \"./startup.sh\n\"", " Restarts the server") }
+        self.commandDict = {"start": Command("screen -d -r minecraft-simplex -X stuff \"./startup.sh\n\"", " Starts the server"), "ping" : Command(screen -d -r minecraft-simplex -X stuff \"/say Ping!\n\"" }
 
     # def __init__(self, userid):
     #     self.commandDict = {}
