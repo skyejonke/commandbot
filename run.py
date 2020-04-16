@@ -41,6 +41,7 @@ async def on_message(message):
 
         await message.channel.send(output + "```")
     elif message.content.startswith('$'):
+        if (message.author.id in notebook.userid):
             for x, y in notebook.commandDict.items():
                 if message.content.startswith('$' + x):
                     out, err = y.run()
