@@ -8,7 +8,7 @@ class Command:
         self.cmd = cmd
         self.description = description
     def run(self):
-        process = subprocess.Popen(shelx.split(self.cmd, stdout=subprocess.PIPE)
+        process = subprocess.Popen(shelx.split(self.cmd), stdout=subprocess.PIPE)
         output, error = process.communicate()
         return output, error
 
